@@ -4,7 +4,7 @@
     define('LANG_INSTALLATION_WIZARD',      'Майстер встановлення');
     define('LANG_NEXT',                     'Далі &rarr;');
 
-    define('LANG_MANUAL',                   '<a href="http://docs.instantcms.ru/manual/install" target="_blank" rel="noopener noreferrer">Інструкція по встановленню</a>');
+    define('LANG_MANUAL',                   '<a href="https://docs.instantcms.ru/manual/install" target="_blank" rel="noopener noreferrer">Інструкція по встановленню</a>');
 
     define('LANG_LANGUAGE_SELECT_RU',       'Пожалуйста, выберите язык');
     define('LANG_LANGUAGE_SELECT_EN',       'Please, select a language');
@@ -72,7 +72,7 @@
     define('LANG_DATABASE_BASE',            'База даних');
     define('LANG_DATABASE_BASE_HINT',       'Якщо не існує, буде створена');
     define('LANG_DATABASE_ENGINE',          'Рушій бази даних');
-    define('LANG_DATABASE_ENGINE_HINT',     'Не знаєте що обрати? Вибирайте MyISAM.');
+    define('LANG_DATABASE_ENGINE_HINT',     'Не знаєте що обрати? Вибирайте InnoDB.');
     define('LANG_DATABASE_PREFIX',          'Префікс таблиць');
     define('LANG_DATABASE_USERS_TABLE',     'Таблиця з користувачами');
     define('LANG_DATABASE_USERS_TABLE_NEW', 'Створити нову');
@@ -134,4 +134,3 @@
     define('LANG_CFG_TIME_ZONE',            'Europe/Moscow');
     define('LANG_CFG_METAKEYS',             'ключові, слова, сайту');
     define('LANG_CFG_METADESC',             'Опис сайту');
-

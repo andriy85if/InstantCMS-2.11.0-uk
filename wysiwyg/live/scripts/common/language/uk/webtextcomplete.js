@@ -19,7 +19,7 @@ function writeTitle() {
 }
 function getTxt(s) {
     switch (s) {
-        case "DEFAULT SIZE": return "По-замовчуванню";
+        case "DEFAULT SIZE": return "За замовчуванням";
         case "Heading 1": return "Заголовок 1";
         case "Heading 2": return "Заголовок 2";
         case "Heading 3": return "Заголовок 3";

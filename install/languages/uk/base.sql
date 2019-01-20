@@ -230,7 +230,7 @@ CREATE TABLE `{#}content_types` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
   `name` varchar(32) NOT NULL COMMENT 'Системне ім’я',
-  `description` varchar(255) DEFAULT NULL COMMENT 'Опис',
+  `description` text COMMENT 'Опис',
   `ordering` int(11) DEFAULT NULL,
   `is_date_range` tinyint(1) unsigned DEFAULT NULL,
   `is_premod_add` tinyint(1) unsigned DEFAULT NULL COMMENT 'Модерація при створенні?',
@@ -263,8 +263,8 @@ CREATE TABLE `{#}content_types` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Типи контенту';
 
 INSERT INTO `{#}content_types` (`id`, `title`, `name`, `description`, `is_date_range`, `is_cats`, `is_cats_recursive`, `is_folders`, `is_in_groups`, `is_in_groups_only`, `is_comments`, `is_comments_tree`, `is_rating`, `is_rating_pos`, `is_tags`, `is_auto_keys`, `is_auto_desc`, `is_auto_url`, `is_fixed_url`, `url_pattern`, `options`, `labels`, `seo_keys`, `seo_desc`, `seo_title`, `item_append_html`, `is_fixed`) VALUES
-(1, 'Сторінки', 'pages', 'Статичні сторінки сайту', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '{id}-{title}', '---\nis_cats_change: null\nis_cats_open_root: null\nis_cats_only_last: null\nis_tags_in_list: null\nis_tags_in_item: null\nis_rss: null\nlist_on: null\nprofile_on: null\nlist_show_filter: null\nlist_expand_filter: null\nitem_on: 1\n', '---\none: сторінка\ntwo: сторінки\nmany: сторінок\ncreate: сторінку\n', NULL, NULL, NULL, NULL, 1),
-(7, 'Фотоальбоми', 'albums', 'Альбоми з фотографіями користувачів', NULL, NULL, NULL, NULL, 1, NULL, 1, NULL, 1, NULL, 1, 1, 1, 1, 1, '{id}-{title}', '---\nis_cats_change: null\nis_cats_open_root: null\nis_cats_only_last: null\nis_show_cats: null\nis_tags_in_list: null\nis_tags_in_item: 1\nis_rss: 1\nlist_on: 1\nprofile_on: 1\nlist_show_filter: null\nlist_expand_filter: null\nitem_on: 1\nis_cats_keys: null\nis_cats_desc: null\nis_cats_auto_url: 1\n', '---\none: альбом\ntwo: альбоми\nmany: альбоми\ncreate: фотоальбом\n', NULL, NULL, NULL, NULL, 1);
+(1, 'Сторінки', 'pages', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, NULL, NULL, '{id}-{title}', '---\nis_cats_change: null\nis_cats_open_root: null\nis_cats_only_last: null\nis_tags_in_list: null\nis_tags_in_item: null\nis_rss: null\nlist_on: null\nprofile_on: null\nlist_show_filter: null\nlist_expand_filter: null\nitem_on: 1\n', '---\none: сторінка\ntwo: сторінки\nmany: сторінок\ncreate: сторінку\n', NULL, NULL, NULL, NULL, 1),
+(7, 'Фотоальбоми', 'albums', '<p>Альбоми з фотографіями користувачів</p>', NULL, NULL, NULL, NULL, 1, NULL, 1, NULL, 1, NULL, 1, 1, 1, 1, 1, '{id}-{title}', '---\nis_cats_change: null\nis_cats_open_root: null\nis_cats_only_last: null\nis_show_cats: null\nis_tags_in_list: null\nis_tags_in_item: 1\nis_rss: 1\nlist_on: 1\nprofile_on: 1\nlist_show_filter: null\nlist_expand_filter: null\nitem_on: 1\nis_cats_keys: null\nis_cats_desc: null\nis_cats_auto_url: 1\n', '---\none: альбом\ntwo: альбоми\nmany: альбомів\ncreate: фотоальбом\n', NULL, NULL, NULL, NULL, 1);
 
 DROP TABLE IF EXISTS `{#}controllers`;
 CREATE TABLE `{#}controllers` (
@@ -286,28 +286,28 @@ CREATE TABLE `{#}controllers` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Компоненти';
 
 INSERT INTO `{#}controllers` (`id`, `title`, `name`, `is_enabled`, `options`, `author`, `url`, `version`, `is_backend`) VALUES
-(1, 'Панель керування', 'admin', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 0),
-(2, 'Контент', 'content', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 0),
-(3, 'Профілі користувачів', 'users', 1, '---\nis_ds_online: 1\nis_ds_rating: 1\nis_ds_popular: 1\nis_filter: 1\nis_auth_only: null\nis_status: 1\nis_wall: 1\nis_themes_on: 1\nmax_tabs: 6\nis_friends_on: 1\nis_karma_comments: 1\nkarma_time: 30\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(4, 'Коментарі', 'comments', 1, '---\ndisable_icms_comments: null\nis_guests: null\nguest_ip_delay:\nrestricted_ips:\ndim_negative: 1\nupdate_user_rating: 1\nlimit: 20\nseo_keys:\nseo_desc:\nis_guests_moderate: 1\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(5, 'Особисті повідомлення', 'messages', 1, '---\nlimit: 10\ngroups_allowed: \n  - 0\n', 'InstantCMS Team', 'http://www.instantcms.ru/', '2.0', 1),
-(6, 'Авторизація та реєстрація', 'auth', 1, '---\nis_reg_enabled: 1\nreg_reason: >\n  Нажаль, нам зараз\n  не потрібні нові\n  користувачі\nis_reg_invites: null\nreg_captcha: 1\nverify_email: null\nverify_exp: 48\nauth_captcha: 0\nrestricted_emails: |\n  *@shitmail.me\r\n  *@mailspeed.ru\r\n  *@temp-mail.ru\r\n  *@guerrillamail.com\r\n  *@12minutemail.com\r\n  *@mytempemail.com\r\n  *@spamobox.com\r\n  *@disposableinbox.com\r\n  *@filzmail.com\r\n  *@freemail.ms\r\n  *@anonymbox.com\r\n  *@lroid.com\r\n  *@yopmail.com\r\n  *@TempEmail.net\r\n  *@spambog.com\r\n  *@mailforspam.com\r\n  *@spam.su\r\n  *@no-spam.ws\r\n  *@mailinator.com\r\n  *@spamavert.com\r\n  *@trashcanmail.com\nrestricted_names: |\n  admin*\r\n  адмін*\r\n  модератор\r\n  moderator\nrestricted_ips:\nis_invites: 1\nis_invites_strict: 1\ninvites_period: 7\ninvites_qty: 3\ninvites_min_karma: 0\ninvites_min_rating: 0\ninvites_min_days: 0\nreg_auto_auth: 1\nfirst_auth_redirect: profileedit\nauth_redirect: none\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(7, 'Стрічка активності', 'activity', 1, '---\ntypes:\n  - 10\n  - 11\n  - 17\n  - 16\n  - 14\n  - 13\n  - 18\n  - 7\n  - 19\n  - 12\n  - 8\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(8, 'Групи', 'groups', 1, '---\nis_ds_rating: 1\nis_ds_popular: 1\nis_wall: 1\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(9, 'Редактор розмітки', 'markitup', 1, '---\nset: default-ru\nskin: simple\nimages_upload: 1\nimages_w: 400\nimages_h: 400\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(10, 'Рейтинг', 'rating', 1, '---\nis_hidden: 1\nis_show: 1\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(11, 'Стіна', 'wall', 1, '---\nlimit: 15\norder_by: date_last_reply\nshow_entries: 5\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(12, 'Капча reCAPTCHA', 'recaptcha', 1, '---\npublic_key: 6LdgRuESAAAAAKsuQoDeT_wPZ0YN6T0jGjKuHZRI\nprivate_key: 6LdgRuESAAAAAFaKHgCjfQlHVYh8v3aeYirFM0ow\ntheme: clean\nlang: ru\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(13, 'Модерація', 'moderation', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(14, 'Теги', 'tags', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(15, 'Генератор RSS', 'rss', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(16, 'Генератор карти сайту', 'sitemap', 1, '---\nsources:\n  users|profiles: 1\n  groups|profiles: 1\n  content|pages: 1\n  content|articles: 1\n  content|posts: 1\n  content|albums: 1\n  content|board: 1\n  content|news: 1\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(17, 'Пошук', 'search', 1, '---\nctypes:\n  - articles\n  - posts\n  - albums\n  - board\n  - news\nperpage: 15\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(18, 'Фотоальбоми', 'photos', 1, '---\nsizes:\n  - normal\n  - small\n  - big\nis_origs: 1\npreset: big\npreset_small: normal\ntypes: |\n  1 | Фото\r\n  2 | Вектори\r\n  3 | Ілюстрації\nordering: date_pub\norderto: desc\nlimit: 20\ndownload_view:\n  normal:\n    - 0\n  related_photos:\n    - 0\n  micro:\n    - 0\n  small:\n    - 0\n  big:\n    - 0\n  original:\n    - 0\ndownload_hide:\n  normal: null\n  related_photos: null\n  micro: null\n  small: null\n  big: null\n  original:\n    - 1\n    - 3\n    - 4\nurl_pattern: ''{id}-{title}''\npreset_related: normal\nrelated_limit: 20\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(19, 'Завантаження зображень', 'images', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(20, 'Редиректи', 'redirect', 1, '---\nno_redirect_list:\nblack_list:\nis_check_link: null\nwhite_list:\nredirect_time: 10\nis_check_refer: null\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(21, 'Географія', 'geo', 1, NULL, 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1),
-(22, 'Підписки', 'subscriptions', 1, '---\nguest_email_confirmation: 1\nneed_auth: null\nverify_exp: 24\nupdate_user_rating: 1\nrating_value: 1\nadmin_email:\nlimit: 20\n', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', 1);
+(1, 'Панель керування', 'admin', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 0),
+(2, 'Контент', 'content', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 0),
+(3, 'Профілі користувачів', 'users', 1, '---\nis_ds_online: 1\nis_ds_rating: 1\nis_ds_popular: 1\nis_filter: 1\nis_auth_only: null\nis_status: 1\nis_wall: 1\nis_themes_on: 1\nmax_tabs: 6\nis_friends_on: 1\nis_karma_comments: 1\nkarma_time: 30\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(4, 'Коментарі', 'comments', 1, '---\ndisable_icms_comments: null\nis_guests: 1\nguest_ip_delay: 1\nrestricted_ips:\ndim_negative: 1\nupdate_user_rating: 1\nlimit: 20\nseo_keys:\nseo_desc:\nis_guests_moderate: 1\nrestricted_emails:\nrestricted_names:\nlimit_nesting: 5\nshow_author_email: 1\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(5, 'Особисті повідомлення', 'messages', 1, '---\nlimit: 10\ngroups_allowed: \n  - 0\n', 'InstantCMS Team', 'https://instantcms.ru/', '2.0', 1),
+(6, 'Авторизація та реєстрація', 'auth', 1, '---\nis_reg_enabled: 1\nreg_reason: >\n  На жаль, нам зараз\n  не потрібні нові\n  користувачі\nis_reg_invites: null\nreg_captcha: null\nverify_email: null\nverify_exp: 48\nauth_captcha: null\nrestricted_emails: |\n  *@shitmail.me\r\n  *@mailspeed.ru\r\n  *@temp-mail.ru\r\n  *@guerrillamail.com\r\n  *@12minutemail.com\r\n  *@mytempemail.com\r\n  *@spamobox.com\r\n  *@disposableinbox.com\r\n  *@filzmail.com\r\n  *@freemail.ms\r\n  *@anonymbox.com\r\n  *@lroid.com\r\n  *@yopmail.com\r\n  *@TempEmail.net\r\n  *@spambog.com\r\n  *@mailforspam.com\r\n  *@spam.su\r\n  *@no-spam.ws\r\n  *@mailinator.com\r\n  *@spamavert.com\r\n  *@trashcanmail.com\nrestricted_names: |\n  admin*\r\n  адмін*\r\n  модератор\r\n  moderator\nrestricted_ips:\nis_invites: 1\nis_invites_strict: 1\ninvites_period: 7\ninvites_qty: 3\ninvites_min_karma: 0\ninvites_min_rating: 0\ninvites_min_days: 0\nreg_auto_auth: 1\nfirst_auth_redirect: profileedit\nauth_redirect: none\ndef_groups:\n  - 3\nis_site_only_auth_users: null\nguests_allow_controllers:\n  - auth\n  - geo\nseo_keys:\nseo_desc:\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(7, 'Стрічка активності', 'activity', 1, '---\ntypes:\n  - 10\n  - 11\n  - 17\n  - 16\n  - 14\n  - 13\n  - 18\n  - 7\n  - 19\n  - 12\n  - 8\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(8, 'Групи', 'groups', 1, '---\nis_ds_rating: 1\nis_ds_popular: 1\nis_wall: 1\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(9, 'Редактор розмітки', 'markitup', 1, '---\nset: default-ru\nskin: simple\nimages_upload: 1\nimages_w: 400\nimages_h: 400\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(10, 'Рейтинг', 'rating', 1, '---\nis_hidden: 1\nis_show: 1\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(11, 'Стіна', 'wall', 1, '---\nlimit: 15\norder_by: date_last_reply\nshow_entries: 5\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(12, 'Капча reCAPTCHA', 'recaptcha', 1, '---\npublic_key:\nprivate_key:\ntheme: light\nlang: ru\nsize: normal\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(13, 'Модерація', 'moderation', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(14, 'Теги', 'tags', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(15, 'Генератор RSS', 'rss', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(16, 'Генератор карти сайту та robots.txt', 'sitemap', 1, '---\nsources:\n  content|pages: 1\n  content|albums: 1\n  content|articles: 1\n  content|posts: 1\n  content|board: 1\n  content|news: 1\n  frontpage|root: 1\n  groups|profiles: 1\n  users|profiles: 1\nshow_lastmod: 1\nshow_changefreq: 1\ndefault_changefreq: daily\nshow_priority: 1\nrobots: |\n  User-agent: *\r\n  Disallow:\ngenerate_html_sitemap: null\nchangefreq:\n  content:\n    pages:\n    albums:\n    articles:\n    posts:\n    board:\n    news:\n  frontpage:\n    root:\n  groups:\n    profiles:\n  users:\n    profiles:\npriority:\n  content:\n    pages:\n    albums:\n    articles:\n    posts:\n    board:\n    news:\n  frontpage:\n    root: 1.0\n  groups:\n    profiles: 0.8\n  users:\n    profiles: 0.8\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(17, 'Пошук', 'search', 1, '---\nctypes:\n  - articles\n  - posts\n  - albums\n  - board\n  - news\nperpage: 15\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(18, 'Фотоальбоми', 'photos', 1, '---\nsizes:\n  - normal\n  - small\n  - big\nis_origs: 1\npreset: big\npreset_small: normal\ntypes: |\n  1 | Фото\r\n  2 | Вектори\r\n  3 | Ілюстрації\nordering: date_pub\norderto: desc\nlimit: 20\ndownload_view:\n  normal:\n    - 0\n  related_photos:\n    - 0\n  micro:\n    - 0\n  small:\n    - 0\n  big:\n    - 0\n  original:\n    - 0\ndownload_hide:\n  normal: null\n  related_photos: null\n  micro: null\n  small: null\n  big: null\n  original:\n    - 1\n    - 3\n    - 4\nurl_pattern: ''{id}-{title}''\npreset_related: normal\nrelated_limit: 20\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(19, 'Завантаження зображень', 'images', 1, NULL, 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(20, 'Редиректи', 'redirect', 1, '---\nno_redirect_list:\nblack_list:\nis_check_link: null\nwhite_list:\nredirect_time: 10\nis_check_refer: null\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(21, 'Географія', 'geo', 1, '---\nauto_detect: 1\nauto_detect_provider: ipgeobase\ndefault_country_id: null\ndefault_country_id_cache: null\ndefault_region_id: null\ndefault_region_id_cache: null\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1),
+(22, 'Підписки', 'subscriptions', 1, '---\nguest_email_confirmation: 1\nneed_auth: null\nverify_exp: 24\nupdate_user_rating: 1\nrating_value: 1\nadmin_email:\nlimit: 20\n', 'InstantCMS Team', 'https://instantcms.ru', '2.0', 1);
 
 DROP TABLE IF EXISTS `{#}con_albums`;
 CREATE TABLE `{#}con_albums` (
@@ -319,6 +319,7 @@ CREATE TABLE `{#}con_albums` (
   `seo_desc` varchar(256) DEFAULT NULL,
   `seo_title` varchar(256) DEFAULT NULL,
   `tags` varchar(1000) DEFAULT NULL,
+  `template` varchar(150) DEFAULT NULL,
   `date_pub` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_modified` timestamp NULL DEFAULT NULL,
   `date_pub_end` timestamp NULL DEFAULT NULL,
@@ -365,6 +366,7 @@ CREATE TABLE `{#}con_albums_cats` (
   `seo_keys` varchar(256) DEFAULT NULL,
   `seo_desc` varchar(256) DEFAULT NULL,
   `seo_title` varchar(256) DEFAULT NULL,
+  `seo_h1` varchar(256) DEFAULT NULL,
   `ordering` int(11) DEFAULT NULL,
   `ns_left` int(11) DEFAULT NULL,
   `ns_right` int(11) DEFAULT NULL,
@@ -372,6 +374,8 @@ CREATE TABLE `{#}con_albums_cats` (
   `ns_differ` varchar(32) NOT NULL DEFAULT '',
   `ns_ignore` tinyint(4) NOT NULL DEFAULT '0',
   `allow_add` text,
+  `is_hidden` tinyint(1) UNSIGNED DEFAULT NULL,
+  `cover` text,
   PRIMARY KEY (`id`),
   KEY `ordering` (`ordering`),
   KEY `slug` (`slug`),
@@ -475,6 +479,7 @@ CREATE TABLE `{#}con_pages` (
   `seo_desc` varchar(256) DEFAULT NULL,
   `seo_title` varchar(256) DEFAULT NULL,
   `tags` varchar(1000) DEFAULT NULL,
+  `template` varchar(150) DEFAULT NULL,
   `date_pub` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_last_modified` timestamp NULL DEFAULT NULL,
   `date_pub_end` timestamp NULL DEFAULT NULL,
@@ -519,6 +524,7 @@ CREATE TABLE `{#}con_pages_cats` (
   `seo_keys` varchar(256) DEFAULT NULL,
   `seo_desc` varchar(256) DEFAULT NULL,
   `seo_title` varchar(256) DEFAULT NULL,
+  `seo_h1` varchar(256) DEFAULT NULL,
   `ordering` int(11) DEFAULT NULL,
   `ns_left` int(11) DEFAULT NULL,
   `ns_right` int(11) DEFAULT NULL,
@@ -526,6 +532,8 @@ CREATE TABLE `{#}con_pages_cats` (
   `ns_differ` varchar(32) NOT NULL DEFAULT '',
   `ns_ignore` tinyint(4) NOT NULL DEFAULT '0',
   `allow_add` text,
+  `is_hidden` tinyint(1) UNSIGNED DEFAULT NULL,
+  `cover` text,
   PRIMARY KEY (`id`),
   KEY `ordering` (`ordering`),
   KEY `slug` (`slug`),
@@ -770,7 +778,20 @@ INSERT INTO `{#}events` (`id`, `event`, `listener`, `ordering`, `is_enabled`) VA
 (137, 'content_after_add_approve', 'subscriptions', 137, 1),
 (138, 'publish_delayed_content', 'subscriptions', 138, 1),
 (139, 'ctype_basic_form', 'subscriptions', 139, 1),
-(140, 'admin_dashboard_block', 'users', 140, 1);
+(140, 'admin_dashboard_block', 'users', 140, 1),
+(141, 'engine_start', 'sitemap', 141, 1),
+(142, 'sitemap_sources', 'frontpage', 142, 1),
+(143, 'sitemap_sources', 'photos', 143, 1),
+(144, 'ctype_basic_form', 'tags', 144, 1),
+(145, 'content_after_add', 'tags', 145, 1),
+(146, 'content_before_update', 'tags', 146, 1),
+(147, 'content_item_form', 'tags', 147, 1),
+(148, 'content_before_item', 'tags', 148, 1),
+(149, 'content_before_list', 'tags', 149, 1),
+(150, 'tags_search_subjects', 'content', 150, 1),
+(151, 'images_before_upload', 'typograph', 151, 1),
+(152, 'engine_start', 'content', 152, 1),
+(153, 'content_category_after_update', 'subscriptions', 153, 1);
 
 DROP TABLE IF EXISTS `{#}groups`;
 CREATE TABLE `{#}groups` (
@@ -924,6 +945,7 @@ CREATE TABLE `{#}menu_items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `menu_id` int(11) unsigned DEFAULT NULL COMMENT 'ID меню',
   `parent_id` int(11) unsigned DEFAULT '0' COMMENT 'ID батьківського пункту',
+  `is_enabled` tinyint(1) UNSIGNED DEFAULT '1' COMMENT 'Увімкнений?',
   `title` varchar(64) DEFAULT NULL COMMENT 'Заголовок пункту',
   `url` varchar(255) DEFAULT NULL COMMENT 'Посилання',
   `ordering` int(11) unsigned DEFAULT NULL COMMENT 'Порядковий номер',
@@ -1215,6 +1237,7 @@ CREATE TABLE `{#}scheduler_tasks` (
   `date_last_run` timestamp NULL DEFAULT NULL,
   `is_active` tinyint(1) UNSIGNED DEFAULT NULL,
   `is_new` tinyint(1) UNSIGNED DEFAULT '1',
+  `consistent_run` tinyint(1) UNSIGNED DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `period` (`period`),
   KEY `date_last_run` (`date_last_run`),
@@ -1347,7 +1370,7 @@ CREATE TABLE `{#}users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='Користувачі';
 
 INSERT INTO `{#}users` (`id`, `groups`, `email`, `password`, `password_salt`, `is_admin`, `nickname`, `date_reg`, `date_log`, `date_group`, `ip`, `is_locked`, `lock_until`, `lock_reason`, `pass_token`, `date_token`, `friends_count`, `subscribers_count`, `time_zone`, `karma`, `rating`, `theme`, `notify_options`, `privacy_options`, `status_id`, `status_text`, `inviter_id`, `invites_count`, `date_invites`, `birth_date`, `city`, `city_cache`, `hobby`, `avatar`, `icq`, `skype`, `phone`, `music`, `movies`, `site`) VALUES
-(1, '---\n- 6\n', 'admin@example.com', '', '', 1, 'admin', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, 0, 0, 'Europe/Moscow', 0, 0, '---\nbg_img: null\nbg_color: ''#ffffff''\nbg_repeat: no-repeat\nbg_pos_x: left\nbg_pos_y: top\nmargin_top: 0\n', '---\nusers_friend_add: both\nusers_friend_delete: both\ncomments_new: both\ncomments_reply: email\nusers_friend_aссept: pm\ngroups_invite: email\nusers_wall_write: email\n', '---\nusers_profile_view: anyone\nmessages_pm: anyone\n', NULL, NULL, NULL, 0, NULL, '1985-10-15 00:00:00', 4400, 'Москва', 'Ротор векторного поля, очевидно, неоднозначен. По сути, уравнение в частных производных масштабирует нормальный лист Мёбиуса, при этом, вместо 13 можно взять любую другую константу.', NULL, '987654321', 'admin', '100-20-30', 'Disco House, Minimal techno', 'разные интересные', 'instantcms.ru');
+(1, '---\n- 6\n', 'admin@example.com', '', '', 1, 'admin', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '127.0.0.1', NULL, NULL, NULL, NULL, NULL, 0, 0, 'Europe/Moscow', 0, 0, '---\nbg_img: null\nbg_color: ''#ffffff''\nbg_repeat: no-repeat\nbg_pos_x: left\nbg_pos_y: top\nmargin_top: 0\n', '---\nusers_friend_add: both\nusers_friend_delete: both\ncomments_new: both\ncomments_reply: email\nusers_friend_accept: pm\ngroups_invite: email\nusers_wall_write: email\n', '---\nusers_profile_view: anyone\nmessages_pm: anyone\n', NULL, NULL, NULL, 0, NULL, '1985-10-15 00:00:00', 4400, 'Москва', 'Ротор векторного поля, очевидно, неоднозначен. По сути, уравнение в частных производных масштабирует нормальный лист Мёбиуса, при этом, вместо 13 можно взять любую другую константу.', NULL, '987654321', 'admin', '100-20-30', 'Disco House, Minimal techno', 'разные интересные', 'instantcms.ru');
 
 DROP TABLE IF EXISTS `{#}users_contacts`;
 CREATE TABLE `{#}users_contacts` (
@@ -1643,31 +1666,32 @@ CREATE TABLE `{#}widgets` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Доступні віджети CMS';
 
 INSERT INTO `{#}widgets` (`id`, `controller`, `name`, `title`, `author`, `url`, `version`, `is_external`) VALUES
-(1, NULL, 'text', 'Текстовий блок', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(2, 'users', 'list', 'Список користувачів', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(3, NULL, 'menu', 'Меню', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(4, 'content', 'list', 'Список контенту', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(5, 'content', 'categories', 'Категорії', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(6, 'activity', 'list', 'Стрічка активності', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(7, 'comments', 'list', 'Нові коментарі', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(8, 'users', 'online', 'Хто онлайн', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(9, 'users', 'avatar', 'Аватар користувача', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(10, 'tags', 'cloud', 'Хмара тегів', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(11, 'content', 'slider', 'Слайдер контенту', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(12, 'auth', 'auth', 'Форма авторизації', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(13, 'search', 'search', 'Пошук', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(14, NULL, 'html', 'HTML блок', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(15, 'content', 'filter', 'Фільтр контенту', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(16, 'photos', 'list', 'Список фотографій', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(17, 'groups', 'list', 'Список груп', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(18, 'subscriptions', 'button', 'Кнопки підписки', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL),
-(19, 'auth', 'register', 'Форма реєстрації', 'InstantCMS Team', 'http://www.instantcms.ru', '2.0', NULL);
+(1, NULL, 'text', 'Текстовий блок', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(2, 'users', 'list', 'Список користувачів', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(3, NULL, 'menu', 'Меню', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(4, 'content', 'list', 'Список контенту', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(5, 'content', 'categories', 'Категорії', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(6, 'activity', 'list', 'Стрічка активності', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(7, 'comments', 'list', 'Нові коментарі', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(8, 'users', 'online', 'Хто онлайн', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(9, 'users', 'avatar', 'Аватар користувача', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(10, 'tags', 'cloud', 'Хмара тегів', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(11, 'content', 'slider', 'Слайдер контенту', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(12, 'auth', 'auth', 'Форма авторизації', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(13, 'search', 'search', 'Пошук', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(14, NULL, 'html', 'HTML блок', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(15, 'content', 'filter', 'Фільтр контенту', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(16, 'photos', 'list', 'Список фотографій', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(17, 'groups', 'list', 'Список груп', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(18, 'subscriptions', 'button', 'Кнопки підписки', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL),
+(19, 'auth', 'register', 'Форма реєстрації', 'InstantCMS Team', 'https://instantcms.ru', '2.0', NULL);
 
 DROP TABLE IF EXISTS `{#}widgets_bind`;
 CREATE TABLE `{#}widgets_bind` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `template` varchar(30) DEFAULT NULL COMMENT 'Прив’язка до шаблону',
   `template_layouts` varchar(500) DEFAULT NULL,
+  `languages` varchar(100) DEFAULT NULL,
   `widget_id` int(11) unsigned NOT NULL,
   `title` varchar(128) NOT NULL COMMENT 'Заголовок',
   `links` text,

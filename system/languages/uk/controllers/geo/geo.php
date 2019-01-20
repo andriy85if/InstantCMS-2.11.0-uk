@@ -23,4 +23,6 @@
 	define('LANG_GEO_SUCCESS_DELETE_CITY', 'Місто успішно видалено');
 	define('LANG_GEO_SUCCESS_DELETE_REGION', 'Регіон та його міста успішно видалено');
 	define('LANG_GEO_SUCCESS_DELETE_COUNTRY', 'Країна, її регіони та міста успішно видалено');
-    define('LANG_HELP_URL_GEO', 'http://docs.instantcms.ru/manual/components/geo');
+	define('LANG_GEO_AUTO_DETECT_PROVIDER', 'Сервіс автовизначення місцезнаходження');
+	define('LANG_GEO_DEFAULT_COUNTRY_ID', 'Країна сайту за замовчуванням');
+    define('LANG_HELP_URL_GEO', 'https://docs.instantcms.ru/manual/components/geo');

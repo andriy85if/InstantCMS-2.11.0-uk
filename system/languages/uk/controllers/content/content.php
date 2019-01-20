@@ -12,7 +12,8 @@
     define('LANG_CONTENT_PUB_LONG_EXT',	     'Продовжити термін публікації, днів');
     define('LANG_CONTENT_PUB_LONG_NOW',	     'Зараз опубліковано до %s');
     define('LANG_CONTENT_IS_PUB',	     'Публіковати %s на сайті');
-    define('LANG_CONTENT_IS_PUB_OFF',	     'Публікація відключена по дату');
+    define('LANG_CONTENT_IS_PUB_OFF',	     'Публікація відключена по даті');
+	define('LANG_CONTENT_TEMPLATE',		     'Шаблон допису для виведення');
     define('LANG_CONTENT_WRONG_PARENT',		 'Обрано невірний батьківський елемент');
     define('LANG_RULE_CONTENT_VIEW_LIST',    'Заборонити перегляд списку дописів');
     define('LANG_RULE_CONTENT_VIEW_LIST_HINT', 'Якщо це правило задано хоча би для однієї з груп, гостям список дописів не показується');

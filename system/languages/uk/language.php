@@ -77,6 +77,7 @@
     define('LANG_WIDGET_BODY_TPL',			 'Шаблон віджету');
     define('LANG_WIDGET_BODY_TPL_HINT',	     'Назва файлу із папки <b>%s</b> вашого шаблону, без розширення <b>.tpl.php</b>');
     define('LANG_WIDGET_DEVICE',			 'На яких пристроях показувати віджет');
+    define('LANG_WIDGET_LANG_SELECT',		 'Для яких мов сайту показувати віджет');
     define('LANG_WIDGET_TEMPLATE_LAYOUT',	 'Виводити на макетах');
     define('LANG_DESKTOP_DEVICES',  'Настільні ПК');
     define('LANG_TABLET_DEVICES',  'Планшети');
@@ -102,6 +103,7 @@
     define('LANG_PARSER_NUMBER_IS_ABS',      'Тільки позитивні числа');
     define('LANG_PARSER_CITY',               'Місцезнаходження');
     define('LANG_PARSER_CITY_LOCATION_TYPE', 'Тип місцезнаходження');
+    define('LANG_PARSER_CITY_AUTO_DETECT',   'Визначати країну автоматично');
     define('LANG_PARSER_CITY_LOCATION_GROUP', 'Назва для групування');
     define('LANG_PARSER_CITY_LOCATION_GROUP_HINT', 'Якщо необхідно об’єднати місцезнаходження країна-область-місто, вкажіть одне ім’я об’єднання для всіх полів. Як мінімум повинні бути створені поля типу "країна" і "область"');
     define('LANG_PARSER_CITY_OUTPUT_STRING', 'Рядок виведення значення поля');
@@ -114,6 +116,8 @@
     define('LANG_PARSER_HTML',               'Текст HTML');
     define('LANG_PARSER_HTML_EDITOR',        'Редактор HTML');
     define('LANG_PARSER_HTML_FILTERING',     'Обробляти типографом');
+    define('LANG_PARSER_PARSE_PATTERNS',     'Обробляти спеціальні шаблони');
+    define('LANG_PARSER_PARSE_PATTERNS_HINT', 'Використовуйте поля допису, вставляючи їхні назви в фігурних дужках. Наприклад, для типів контенту: <strong>{title}</strong>, <strong>{category}</strong> і т.п. Можна використовувати обробку значень, детальніше в <a target="_blank" href="https://docs.instantcms.ru/manual/settings/seo-patterns">документації</a>');
     define('LANG_PARSER_BUILD_REDIRECT_LINK', 'При обробці типографом зовнішні посилання формувати через редирект');
     define('LANG_PARSER_HTML_TEASER_LEN',    'Обрізати текст при перегляді списку');
     define('LANG_PARSER_HTML_TEASER_LEN_HINT','Текст буде обрізаний до вказаної довжини, форматування буде видалено');
@@ -273,6 +277,7 @@
     define('LANG_PM_MODERATION_REFUSED',     'Модератор відхилив розміщення і видалив сторінку <b>%1$s</b>.%2$s Причина відхилення: %3$s');
     define('LANG_PM_MODERATION_COMMENT_REFUSED', 'Модератор відхилив ваш коментар на сторінці <b>%1$s</b>.%2$s Причина відхилення: %3$s');
     define('LANG_PM_MODERATION_REWORK',      'Модератор повернув сторінку <b><a href="%2$s">%1$s</a></b> на доопрацювання і вказав зауваження:<br />%3$s');
+    define('LANG_PM_MODERATION_REWORK_DRAFT', 'Усуньте, будь ласка, зауваження в тексті.');
 
     //PERMISSIONS
     define('LANG_PERMISSIONS',               'Доступ');
@@ -394,7 +399,7 @@
     define('LANG_DELETE_FOLDER',             'Видалити папку');
     define('LANG_DELETE_FOLDER_CONFIRM',     'Ви впевнені, що хочете видалити папку?\nВесь вміст також буде видалено!');
 
-    define('LANG_BY_DEFAULT',                'За-замовчуванням');
+    define('LANG_BY_DEFAULT',                'За замовчуванням');
 	define('LANG_BASIC_OPTIONS',             'Спільні');
 	define('LANG_YES',                       'Так');
 	define('LANG_NO',                        'Ні');
@@ -421,6 +426,7 @@
 	define('LANG_ADD_MENUITEM',				 'Створити пункт меню');
 	define('LANG_MENU_MORE',                 'Ще');
 	define('LANG_VIEW', 					 'Перегляд');
+    define('LANG_COPY', 					 'Копіювати');
 	define('LANG_EDIT', 					 'Редагувати');
 	define('LANG_EDIT_SELECTED',			 'Редагувати виділені');
 	define('LANG_SHOW', 					 'Показати');
@@ -513,8 +519,11 @@
 	define('LANG_INFORMATION',               'Інформація');
 	define('LANG_CONTENT', 					 'Вміст');
 	define('LANG_CATEGORY',                  'Категорія');
+    define('LANG_CATEGORIES',                'Категорії');
 	define('LANG_CATEGORY_TITLE',            'Назва категорії');
     define('LANG_CATEGORY_DESCRIPTION',      'Опис  категорії');
+    define('LANG_CATEGORY_IS_HIDDEN',        'Прихована категорія');
+    define('LANG_CATEGORY_COVER',            'Обкладинка категорії');
     define('LANG_FOLDER',                    'Папка');
 	define('LANG_ROOT_NODE',                 'Корінь');
 	define('LANG_ROOT_CATEGORY',             'Коренева категорія');
@@ -542,6 +551,7 @@
     //SEO
     define('LANG_SEO',                       'SEO');
     define('LANG_ROOT_SEO',                  'SEO для головної сторінки');
+    define('LANG_SEO_H1',                    'Тег H1 сторінки');
     define('LANG_SEO_TITLE',                 'Заголовок (тайтл) сторінки');
     define('LANG_SEO_KEYS',                  'Ключові слова');
     define('LANG_SEO_KEYS_HINT',             'Ключові слова сторінки, через кому');

@@ -8,7 +8,8 @@
     define('LANG_IMAGES_PRESET_SIZE_W_HINT', 'Не вказано - визначиться пропорційно висоті');
     define('LANG_IMAGES_PRESET_SIZE_H', 'Висота');
     define('LANG_IMAGES_PRESET_SIZE_H_HINT', 'Не вказано - визначиться пропорційно ширині');
-    define('LANG_IMAGES_PRESET_SQUARE', 'Квадратний');
+    define('LANG_IMAGES_PRESET_SQUARE', 'Обрізати строго за розміром');
+    define('LANG_IMAGES_PRESET_CROP', 'Строге обрізання');
     define('LANG_IMAGES_PRESET_QUALITY', 'Якість');   
     define('LANG_IMAGES_PRESET_WM', 'Водяний знак');   
     define('LANG_IMAGES_PRESET_WM_ON', 'Накладати водяний знак');   

@@ -32,6 +32,10 @@
     define('LANG_PM_PMAILING',              'Масова розсилка');
     define('LANG_PM_PMAILING_GROUPS',       'Групи користувачів для розсилки');
     define('LANG_PM_PMAILING_TYPE',         'Як відсилати повідомлення');
+    define('LANG_PM_REALTIME_MODE',         'Режим реального часу');
+    define('LANG_PM_REALTIME_MODE_SOCKET',  'Сокет сервер [недоступно]');
+    define('LANG_PM_REALTIME_SOCKET_HOST',  'Хост сокет сервера');
+    define('LANG_PM_REALTIME_SOCKET_PORT',  'Порт сокет сервера');
     define('LANG_PM_PMAILING_TYPE_NOTIFY',  'Як сповіщення');
     define('LANG_PM_PMAILING_TYPE_MESSAGE', 'Як особисте повідомлення');
     define('LANG_PM_PMAILING_SENDED',       'Відправлено %s');

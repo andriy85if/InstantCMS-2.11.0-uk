@@ -16,3 +16,4 @@
     define('LANG_SEARCH_TYPE_EXACT',         'точний збіг');
     define('LANG_SEARCH_TOO_SHORT',          'Занадто короткі слова в запиті');
     define('LANG_SEARCH_NO_RESULTS',         'Нічого не знайдено');
+    define('LANG_SEARCH_H1',                 'Результати пошуку за запитом «%s»');

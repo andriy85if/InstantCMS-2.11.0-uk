@@ -39,6 +39,7 @@ define('LANG_REG_WRONG_INVITE_CODE', 'Код запрошення вказани
     define('LANG_REG_CFG_REG_CAPTCHA',          'Показувати капчу для захисту від спамових реєстрацій');
     define('LANG_REG_CFG_AUTH_CAPTCHA',         'Показувати капчу після невдалої авторизації');
     define('LANG_REG_CFG_FIRST_AUTH_REDIRECT',  'Після першої авторизації на сайті');
+define('LANG_REG_CFG_GUESTS_ALLOW_CONTROLLERS', 'Компоненти, доступні без авторизації');
     define('LANG_REG_CFG_AUTH_REDIRECT',        'Після наступних авторизацій на сайті');
     define('LANG_REG_CFG_AUTH_REDIRECT_NONE',        'Залишатися на сторінці, з котрої авторизувалися');
     define('LANG_REG_CFG_AUTH_REDIRECT_INDEX',       'Відкрити головну сторінку');
@@ -72,4 +73,3 @@ define('LANG_AUTH_INVITES_STARGET', 'Кому видати запрошення'
 define('LANG_AUTH_INVITES_SGROUP', 'Групі користувачів');
 define('LANG_AUTH_INVITES_SUSER', 'Або користувачу');
 define('LANG_AUTH_INVITES_SPARAMS', 'Параметри видачі групі користувачів');
-

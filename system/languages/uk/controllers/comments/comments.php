@@ -14,6 +14,7 @@ define('LANG_COMMENTS_DISABLE_ICMS_COMMENTS_HINT', 'Може пригодити�
 define('LANG_COMMENTS_OPT_DIM_NEGATIVE', 'Затемняти коментарі з відʼємним рейтингом');
     define('LANG_COMMENTS_OPT_IS_GUESTS',	'Дозволити коментування гостям');
 define('LANG_COMMENTS_OPT_IS_GUESTS_MODERATE', 'Модерація коментарів від гостей');
+define('LANG_COMMENTS_OPT_SHOW_AUTHOR_EMAIL', 'Показувати поле "E-mail для відповідей"');
     define('LANG_COMMENTS_OPT_IS_GUESTS_HINT',	'Незареєстровані користувачі зможуть додавати коментарі');
     define('LANG_COMMENTS_OPT_GUESTS_DELAY',	'Пауза між коментарями гостей з одного IP');
     define('LANG_COMMENTS_OPT_GUESTS_RESTRICTED_IPS',	'Заборонити гостьові коментарі з IP');
